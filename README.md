@@ -2,6 +2,16 @@
 
 This repository contains the model proposed in the paper "Subjective and Objective Quality Assessment of Display Content Videos." It will be coming soon.
 
+## Dataset Samples
+Due to copyright restrictions, we cannot publicly release the complete dataset. However, we provide representative video samples to demonstrate the key characteristics and diversity of our dataset:
+
+### Video Samples
+- **4K Display Content Samples**: [Google Drive Link](https://drive.google.com/drive/folders/your_folder_id_here)
+- **Sample Description**: Representative examples showcasing various display content scenarios
+- **Format**: 4K videos (H.264 encoded for compatibility)
+- **Duration**: 5 seconds per sample
+
+
 ## Features
 
 - **Swin Transformer Backbone**: Spatial feature extraction
