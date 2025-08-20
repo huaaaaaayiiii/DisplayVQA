@@ -1,5 +1,6 @@
 # DisplayVQA
-This repository contains the model proposed in the paper "Subjective and Objective Quality Assessment of Display Content Videos." It is coming soon.
+
+A video quality assessment framework with enhanced Laplacian pyramid features and color attention mechanisms.
 
 ## Features
 
@@ -13,7 +14,19 @@ This repository contains the model proposed in the paper "Subjective and Objecti
 ## Architecture
 
 ```
-The model's architecture will be available soon.
+Input Video Frames
+       ↓
+Swin Transformer (Spatial Features)
+       ↓
+Base Quality Regressor
+       ↓
+┌─────────────────┬─────────────────┐
+│  Spatial Module │ Temporal Module │
+│ (Laplacian      │ (Motion         │
+│  Features)      │  Features)      │
+└─────────────────┴─────────────────┘
+       ↓
+Combined Quality Prediction
 ```
 
 ## Project Structure
@@ -33,6 +46,15 @@ DisplayVQA/
 
 ## Quick Start
 
+### Prerequisites
+
+```bash
+pip install torch torchvision
+pip install timm transformers
+pip install opencv-python pillow
+pip install pandas numpy scipy
+pip install scikit-learn matplotlib
+```
 
 ### Data Preparation
 
@@ -88,10 +110,16 @@ python trainer.py \
 
 | Database | Frames | Resolution | Domain |
 |----------|--------|------------|---------|
-| 8K-Pro | 5 | 4K | Professional content |
+| 8K-Pro | 5 | 8K/4K | Professional content |
 | KoNViD-1k | 8 | Various | User-generated content |
 | LiveVQC | 10 | Various | Live streaming |
 
+## Performance Metrics
+
+- **PLCC** (Pearson Linear Correlation Coefficient)
+- **SRCC** (Spearman Rank Correlation Coefficient)  
+- **KRCC** (Kendall Rank Correlation Coefficient)
+- **RMSE** (Root Mean Square Error)
 
 ## Model Components
 
@@ -114,3 +142,23 @@ python trainer.py \
 - Modular combination of spatial and temporal enhancements
 - Learnable scale and bias parameters
 - Final quality prediction through geometric mean
+
+## Training Strategy
+
+### Loss Functions
+- **PLCC Loss**: Maximizes linear correlation with ground truth
+- **Ranking Loss**: Preserves relative quality ordering
+- **Combined Loss**: Weighted combination for robust training
+
+### Optimization
+- **Optimizer**: Adam with weight decay (1e-7)
+- **Learning Rate**: 1e-5 with step decay (0.95 every 2 epochs)
+- **Batch Size**: 16 (adjustable based on GPU memory)
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For questions or issues, please contact: your.email@example.com
