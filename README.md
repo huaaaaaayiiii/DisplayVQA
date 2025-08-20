@@ -114,7 +114,3 @@ python trainer.py \
 - Modular combination of spatial and temporal enhancements
 - Learnable scale and bias parameters
 - Final quality prediction through geometric mean
-
-
-
-For questions or issues, please contact: your.email@example.com
